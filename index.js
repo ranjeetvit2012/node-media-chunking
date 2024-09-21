@@ -49,6 +49,7 @@ app.get('/', async (req, res) => {
     ffmpeg(localInputPath)
       .output(`${outputDir}/chunk_%03d.mp4`) // Create chunk files like chunk_001.mp4, chunk_002.mp4
       .videoCodec('libx264')                 // Convert to H.264
+      .audioCodec('aac')                     // Convert audio to AAC
       .format('segment')                     // Segment the video
       .outputOptions('-segment_time', '10')  // Set segment time to 10 seconds
       .on('end', () => {
